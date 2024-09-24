@@ -9,7 +9,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/Tiked/FileEncryption"
+	FileEncryption "github.com/0x00f00bar/tiked_FileEncryption"
 )
 
 func main() {
@@ -58,11 +58,12 @@ func encrypt(filePath *string, args ...string) error {
 		}
 		fmt.Println("Encrypting file...", fileAbsPath)
 		FileEncryption.InitializeBlock(key)
-		err = FileEncryption.Encrypter(fileAbsPath)
+		outFile, err := FileEncryption.Encrypter(fileAbsPath)
 		if err != nil {
 			return err
 		}
-		fmt.Printf("Done. Use key %s to decrypt!\n", base64.StdEncoding.EncodeToString(key))
+		fmt.Printf("Done. File saved as: %s\n", outFile)
+		fmt.Printf("Use key %s to decrypt!\n", base64.StdEncoding.EncodeToString(key))
 		return nil
 	}
 
