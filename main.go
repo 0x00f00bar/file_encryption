@@ -12,7 +12,7 @@ import (
 	FileEncryption "github.com/0x00f00bar/tiked_FileEncryption"
 )
 
-var version = "0.7"
+var version = "0.7.1"
 
 func main() {
 	encryptFile := flag.String("e", "", "Encrypt the file at given path")
