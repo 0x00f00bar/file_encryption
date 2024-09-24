@@ -12,12 +12,15 @@ import (
 	FileEncryption "github.com/0x00f00bar/tiked_FileEncryption"
 )
 
+var version = "0.7"
+
 func main() {
 	encryptFile := flag.String("e", "", "Encrypt the file at given path")
 	decryptFile := flag.String("d", "", "Decrypt the file at given path")
 	key := flag.String("k", "", "Key to decrypt an encrypted file")
 
 	flag.Usage = func() {
+		fmt.Fprintf(flag.CommandLine.Output(), "\nFile Encryption version: %s\n", version)
 		fmt.Fprintf(flag.CommandLine.Output(), "\nEncrypt/Decrypt a file securly using AES\n")
 		fmt.Fprintf(flag.CommandLine.Output(), "Usage: %s [-d | -e] <filepath> [-k] <key>\n", os.Args[0])
 		flag.PrintDefaults()
